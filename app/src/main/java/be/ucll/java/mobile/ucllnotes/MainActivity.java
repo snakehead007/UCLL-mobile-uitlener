@@ -15,6 +15,9 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        // Als alles foutgaat en je wil opnieuw beginnen zo verwijder je de volledige DB
+        // this.deleteDatabase(Constants.DB_NAME);
     }
 
     @Override
