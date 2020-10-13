@@ -83,10 +83,12 @@ public class NoteListFragment extends Fragment implements NoteClick {
     }
 
     private void navigate(String operation, long id) {
-        // 1. Navigeer naar het fragment waar je nota kan intikken of bijwerken
+        // Navigeer naar het fragment waar je nota kan intikken of bijwerken
+        // 1. Geef door dat het Create of Update betreft
         Bundle bundle = new Bundle();
         bundle.putString(Constants.OPERATION, operation);
 
+        // 2. In het geval van een update geef ook de ID door
         if (id != -1L) {
             bundle.putLong(Constants.ID, id);
         }
@@ -94,7 +96,7 @@ public class NoteListFragment extends Fragment implements NoteClick {
         NavHostFragment.findNavController(NoteListFragment.this)
                 .navigate(R.id.action_FirstFragment_to_SecondFragment, bundle);
 
-        // 2. Maak de FloatingActionButton onzichtbaar
+        // 3. Maak de FloatingActionButton onzichtbaar
         fab.setVisibility(View.INVISIBLE);
     }
 

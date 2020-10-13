@@ -20,7 +20,7 @@ public class SwipeToDeleteCallback extends ItemTouchHelper.SimpleCallback {
     private NotesAdapter adapter;
 
     private Drawable icon;
-    private final ColorDrawable background;
+    private ColorDrawable background;
 
     public SwipeToDeleteCallback(NotesAdapter adapter) {
         super(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT);
@@ -28,8 +28,8 @@ public class SwipeToDeleteCallback extends ItemTouchHelper.SimpleCallback {
         this.adapter = adapter;
 
         // Optionele code hieronder. Toont een rode balk met een Delete icoontje
-        icon = ContextCompat.getDrawable(adapter.getContext(), R.drawable.ic_delete_white_36);
-        background = new ColorDrawable(Color.RED);
+        // icon = ContextCompat.getDrawable(adapter.getContext(), R.drawable.ic_delete_white_36);
+        // background = new ColorDrawable(Color.RED);
     }
 
     @Override
@@ -49,7 +49,7 @@ public class SwipeToDeleteCallback extends ItemTouchHelper.SimpleCallback {
     @Override
     public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
         super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
-
+/*
         View itemView = viewHolder.itemView;
         int backgroundCornerOffset = 20; //so background is behind the rounded corners of itemView
 
@@ -77,6 +77,8 @@ public class SwipeToDeleteCallback extends ItemTouchHelper.SimpleCallback {
 
         background.draw(c);
         icon.draw(c);
+
+ */
     }
 
 }
