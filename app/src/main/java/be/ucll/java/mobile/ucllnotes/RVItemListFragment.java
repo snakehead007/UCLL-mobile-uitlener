@@ -30,7 +30,7 @@ public class RVItemListFragment extends Fragment implements RVItemClick {
 
     // UI Components
     private FloatingActionButton fab;
-    private RecyclerView rvNotes;
+    private RecyclerView rvItems;
 
     // Date Access Object voor database CRUDS operaties
     private NotesDao dao;
@@ -50,7 +50,7 @@ public class RVItemListFragment extends Fragment implements RVItemClick {
 
         // Ophalen UI componenten. De 'fab' maakt van het scherm van de Main Activity
         fab = getActivity().findViewById(R.id.fab);
-        rvNotes = view.findViewById(R.id.rvNotes);
+        rvItems = view.findViewById(R.id.rvItems);
 
         // Ophalen data uit databank
         dao = LocalDatabase.getInstance(getContext()).getNotesDao();
@@ -58,27 +58,27 @@ public class RVItemListFragment extends Fragment implements RVItemClick {
 
         // Koppel een adapter aan de RecyclerView met de opgehaalde nota's
         RecViewAdapter adapter = new RecViewAdapter(dao, notes, this);
-        rvNotes.setLayoutManager(new LinearLayoutManager(getContext()));
-        rvNotes.setAdapter(adapter);
+        rvItems.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvItems.setAdapter(adapter);
 
         // Swipe links of rechts om een nota te verwijderen uit de lijst en de databank
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new SwipeToDeleteCallback(adapter));
-        itemTouchHelper.attachToRecyclerView(rvNotes);
+        itemTouchHelper.attachToRecyclerView(rvItems);
 
         // Behandel de click event op de FloatingActionButton
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.i(TAG, "Create new note");
+                Log.i(TAG, "Create new item");
                 navigate(Constants.OPERATION_CREATE, -1L);
             }
         });
     }
 
     @Override
-    public void onRVNoteClick(int pos) {
+    public void onRVItemClick(int pos) {
         Note n = notes.get(pos);
-        Log.i(TAG, "Update note with ID: " + n.getId());
+        Log.i(TAG, "Update item with ID: " + n.getId());
         navigate(Constants.OPERATION_UPDATE, n.getId());
     }
 

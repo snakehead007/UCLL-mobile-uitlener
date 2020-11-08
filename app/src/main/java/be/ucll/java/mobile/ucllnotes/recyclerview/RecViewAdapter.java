@@ -46,7 +46,7 @@ public class RecViewAdapter extends RecyclerView.Adapter<RVItemHolder> {
     public void onBindViewHolder(@NonNull RVItemHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder: " + list.get(position));
         Note n = list.get(position);
-        holder.getTxtRVTitle().setText(n.getTitle());
+        holder.getTxtRVItem().setText(n.getTitle());
     }
 
     @Override
@@ -54,8 +54,8 @@ public class RecViewAdapter extends RecyclerView.Adapter<RVItemHolder> {
         return list.size();
     }
 
-    public void deleteNote(int position) {
-        Log.d(TAG, "deleteNote: " + position);
+    public void deleteItem(int position) {
+        Log.d(TAG, "Delete item in position: " + position);
 
         // Verwijder het item uit de databank
         Note n = list.get(position);

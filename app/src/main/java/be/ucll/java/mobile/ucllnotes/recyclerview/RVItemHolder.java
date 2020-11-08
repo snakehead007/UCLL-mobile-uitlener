@@ -9,14 +9,14 @@ import be.ucll.java.mobile.ucllnotes.R;
 
 public class RVItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-    private TextView txtRVTitle;
+    private TextView txtRVItem;
     private RVItemClick RVItemClick;
 
     // Constructor
     public RVItemHolder(View itemView, RVItemClick RVItemClick) {
         super(itemView);
 
-        txtRVTitle = itemView.findViewById(R.id.txtRVItem);
+        txtRVItem = itemView.findViewById(R.id.txtRVItem);
         this.RVItemClick = RVItemClick;
 
         itemView.setOnClickListener(this);
@@ -26,10 +26,10 @@ public class RVItemHolder extends RecyclerView.ViewHolder implements View.OnClic
     // naar een ander fragment genavigeerd moet worden.
     @Override
     public void onClick(View view) {
-        RVItemClick.onRVNoteClick(getAdapterPosition());
+        RVItemClick.onRVItemClick(getAdapterPosition());
     }
 
-    public TextView getTxtRVTitle() {
-        return txtRVTitle;
+    public TextView getTxtRVItem() {
+        return txtRVItem;
     }
 }

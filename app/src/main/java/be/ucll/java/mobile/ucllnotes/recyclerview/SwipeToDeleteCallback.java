@@ -37,8 +37,7 @@ public class SwipeToDeleteCallback extends ItemTouchHelper.SimpleCallback {
     @Override
     public void onSwiped(RecyclerView.ViewHolder noteHolder, int direction) {
         int position = noteHolder.getAdapterPosition();
-        Log.d(TAG, "Deleting " + position);
-        adapter.deleteNote(position);
+        adapter.deleteItem(position);
     }
 
     @Override
@@ -72,7 +71,6 @@ public class SwipeToDeleteCallback extends ItemTouchHelper.SimpleCallback {
 
         background.draw(c);
         icon.draw(c);
-
  */
     }
 
