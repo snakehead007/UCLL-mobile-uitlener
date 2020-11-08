@@ -1,28 +1,23 @@
 package be.ucll.java.mobile.ucllnotes.recyclerview;
 
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
-import android.view.View;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
-
-import be.ucll.java.mobile.ucllnotes.R;
 
 public class SwipeToDeleteCallback extends ItemTouchHelper.SimpleCallback {
     private static final String TAG = "SwipeToDelete";
 
-    private NotesAdapter adapter;
+    private RecViewAdapter adapter;
 
     private Drawable icon;
     private ColorDrawable background;
 
-    public SwipeToDeleteCallback(NotesAdapter adapter) {
+    public SwipeToDeleteCallback(RecViewAdapter adapter) {
         super(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT);
 
         this.adapter = adapter;

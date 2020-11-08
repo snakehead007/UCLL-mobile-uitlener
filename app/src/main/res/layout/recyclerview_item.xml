@@ -19,7 +19,7 @@ limitations under the License. -->
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/txtRVTitle"
+        android:id="@+id/txtRVItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/holo_green_light"

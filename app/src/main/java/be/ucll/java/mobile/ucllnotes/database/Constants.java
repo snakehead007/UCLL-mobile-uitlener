@@ -4,12 +4,12 @@ public interface Constants {
     // database, table and table columns
     String DB_NAME = "notes.db";
 
-    String TABLE_NAME_NOTE = "note";
+    String TABLE_NAME = "note";
 
-    String NOTE_COLUMN_NAME_ID = "note_id";
-    String NOTE_COLUMN_NAME_TITLE = "title";
-    String NOTE_COLUMN_NAME_CONTENT = "content";
-    String NOTE_COLUMN_NAME_DATE = "creation_date";
+    String COLUMN_NAME_ID = "note_id";
+    String COLUMN_NAME_TITLE = "title";
+    //String COLUMN_NAME_CONTENT = "content";
+    String COLUMN_NAME_DATE = "creation_date";
 
     // Fragment to Fragment navigation
     String ID = "id";

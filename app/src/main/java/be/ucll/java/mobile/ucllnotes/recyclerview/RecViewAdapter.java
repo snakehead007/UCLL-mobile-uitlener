@@ -16,34 +16,34 @@ import be.ucll.java.mobile.ucllnotes.R;
 import be.ucll.java.mobile.ucllnotes.database.NotesDao;
 import be.ucll.java.mobile.ucllnotes.model.Note;
 
-public class NotesAdapter extends RecyclerView.Adapter<NoteHolder> {
-    private static final String TAG = "NotesAdapter";
+public class RecViewAdapter extends RecyclerView.Adapter<RVItemHolder> {
+    private static final String TAG = "RVAdapter";
 
     private NotesDao dao;
     private List<Note> list;
     private Context context;
     private LayoutInflater layoutInflater;
-    private NoteClick noteClick;
+    private RVItemClick RVItemClick;
 
-    public NotesAdapter(NotesDao dao, List<Note> list, Fragment frag) {
+    public RecViewAdapter(NotesDao dao, List<Note> list, Fragment frag) {
         context = frag.getContext();
         layoutInflater = LayoutInflater.from(context);
         this.dao = dao;
         this.list = list;
-        this.noteClick = (NoteClick) frag;
+        this.RVItemClick = (RVItemClick) frag;
     }
 
     @NonNull
     @Override
-    public NoteHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RVItemHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = layoutInflater.inflate(R.layout.recyclerview_item, parent, false);
-        return new NoteHolder(view, noteClick);
+        return new RVItemHolder(view, RVItemClick);
     }
 
     // Voor elk item in de List van de adapter wordt deze method aangeroepen
     // om de 'Data' te visualiseren in de UI met de Recyclerview
     @Override
-    public void onBindViewHolder(@NonNull NoteHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RVItemHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder: " + list.get(position));
         Note n = list.get(position);
         holder.getTxtRVTitle().setText(n.getTitle());

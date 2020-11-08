@@ -7,17 +7,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import be.ucll.java.mobile.ucllnotes.R;
 
-public class NoteHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class RVItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     private TextView txtRVTitle;
-    private NoteClick noteClick;
+    private RVItemClick RVItemClick;
 
     // Constructor
-    public NoteHolder(View itemView, NoteClick noteClick) {
+    public RVItemHolder(View itemView, RVItemClick RVItemClick) {
         super(itemView);
 
-        txtRVTitle = itemView.findViewById(R.id.txtRVTitle);
-        this.noteClick = noteClick;
+        txtRVTitle = itemView.findViewById(R.id.txtRVItem);
+        this.RVItemClick = RVItemClick;
 
         itemView.setOnClickListener(this);
     }
@@ -26,7 +26,7 @@ public class NoteHolder extends RecyclerView.ViewHolder implements View.OnClickL
     // naar een ander fragment genavigeerd moet worden.
     @Override
     public void onClick(View view) {
-        noteClick.onRVNoteClick(getAdapterPosition());
+        RVItemClick.onRVNoteClick(getAdapterPosition());
     }
 
     public TextView getTxtRVTitle() {

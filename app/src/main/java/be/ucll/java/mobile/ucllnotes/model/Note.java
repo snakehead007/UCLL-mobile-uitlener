@@ -11,20 +11,20 @@ import java.util.Date;
 
 import be.ucll.java.mobile.ucllnotes.database.Constants;
 
-@Entity(tableName = Constants.TABLE_NAME_NOTE)
+@Entity(tableName = Constants.TABLE_NAME)
 public class Note implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = Constants.NOTE_COLUMN_NAME_ID)
+    @ColumnInfo(name = Constants.COLUMN_NAME_ID)
     private Long id;
 
-    @ColumnInfo(name = Constants.NOTE_COLUMN_NAME_TITLE)
+    @ColumnInfo(name = Constants.COLUMN_NAME_TITLE)
     private String title;
 
     // Als je geen @ColumnInfo specificeert dan neemt hij de veldnaam hieronder ook als kolomnaam
     private String content;
 
-    @ColumnInfo(name = Constants.NOTE_COLUMN_NAME_DATE)
+    @ColumnInfo(name = Constants.COLUMN_NAME_DATE)
     private Date creation_date;
 
     // Impliciet dwingen we af dat beide velden ingevuld zijn (NonNull)

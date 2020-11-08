@@ -26,17 +26,17 @@ import be.ucll.java.mobile.ucllnotes.util.DateConverter;
 */
 @Database(entities = {Note.class}, version = 1, exportSchema = false)
 @TypeConverters({DateConverter.class})
-public abstract class NotesDatabase extends RoomDatabase {
+public abstract class LocalDatabase extends RoomDatabase {
 
     // Het Data Access Object. Een interface dat de lijst aangeeft van ondersteunde CRUDS operaties
     public abstract NotesDao getNotesDao();
 
     // De gekoppelde SQLite Database instantie specifiek voor deze App met een unieke naam
-    private static NotesDatabase notesDB;
+    private static LocalDatabase db;
 
-    public static NotesDatabase getInstance(Context context) {
-        if (null == notesDB) {
-            notesDB = Room.databaseBuilder(context, NotesDatabase.class, Constants.DB_NAME)
+    public static LocalDatabase getInstance(Context context) {
+        if (null == db) {
+            db = Room.databaseBuilder(context, LocalDatabase.class, Constants.DB_NAME)
                     .allowMainThreadQueries() // DONT do this in real applications !!!
                     .build();
             /*
@@ -47,10 +47,10 @@ public abstract class NotesDatabase extends RoomDatabase {
               Maar voor de eenvoud van de kennismaking met Room doen we het hier toch even zo.
              */
         }
-        return notesDB;
+        return db;
     }
 
-    private static RoomDatabase.Callback notesDatabaseCallback = new RoomDatabase.Callback() {
+    private static RoomDatabase.Callback localDatabaseCallback = new RoomDatabase.Callback() {
         @Override
         public void onOpen(@NonNull SupportSQLiteDatabase db) {
             super.onOpen(db);

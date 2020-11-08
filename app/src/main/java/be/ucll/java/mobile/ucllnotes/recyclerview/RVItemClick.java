@@ -1,5 +1,5 @@
 package be.ucll.java.mobile.ucllnotes.recyclerview;
 
-public interface NoteClick {
+public interface RVItemClick {
     void onRVNoteClick(int pos);
 }

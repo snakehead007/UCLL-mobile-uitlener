@@ -19,14 +19,14 @@ import java.util.List;
 
 import be.ucll.java.mobile.ucllnotes.database.Constants;
 import be.ucll.java.mobile.ucllnotes.database.NotesDao;
-import be.ucll.java.mobile.ucllnotes.database.NotesDatabase;
+import be.ucll.java.mobile.ucllnotes.database.LocalDatabase;
 import be.ucll.java.mobile.ucllnotes.model.Note;
-import be.ucll.java.mobile.ucllnotes.recyclerview.NoteClick;
-import be.ucll.java.mobile.ucllnotes.recyclerview.NotesAdapter;
+import be.ucll.java.mobile.ucllnotes.recyclerview.RVItemClick;
+import be.ucll.java.mobile.ucllnotes.recyclerview.RecViewAdapter;
 import be.ucll.java.mobile.ucllnotes.recyclerview.SwipeToDeleteCallback;
 
-public class NoteListFragment extends Fragment implements NoteClick {
-    private static final String TAG = "NoteListFragment";
+public class RVItemListFragment extends Fragment implements RVItemClick {
+    private static final String TAG = "RVListFragment";
 
     // UI Components
     private FloatingActionButton fab;
@@ -41,7 +41,7 @@ public class NoteListFragment extends Fragment implements NoteClick {
     // onCreateView wordt in de lifecycle van de App maar 1 keer opgeroepen op het Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_notelist, container, false);
+        return inflater.inflate(R.layout.fragment_list, container, false);
     }
 
     // onViewCreated wordt opgeroepen elke keer als het Fragment zichtbaar wordt
@@ -53,11 +53,11 @@ public class NoteListFragment extends Fragment implements NoteClick {
         rvNotes = view.findViewById(R.id.rvNotes);
 
         // Ophalen data uit databank
-        dao = NotesDatabase.getInstance(getContext()).getNotesDao();
+        dao = LocalDatabase.getInstance(getContext()).getNotesDao();
         notes = dao.getAllNotes();
 
         // Koppel een adapter aan de RecyclerView met de opgehaalde nota's
-        NotesAdapter adapter = new NotesAdapter(dao, notes, this);
+        RecViewAdapter adapter = new RecViewAdapter(dao, notes, this);
         rvNotes.setLayoutManager(new LinearLayoutManager(getContext()));
         rvNotes.setAdapter(adapter);
 
@@ -93,7 +93,7 @@ public class NoteListFragment extends Fragment implements NoteClick {
             bundle.putLong(Constants.ID, id);
         }
 
-        NavHostFragment.findNavController(NoteListFragment.this)
+        NavHostFragment.findNavController(RVItemListFragment.this)
                 .navigate(R.id.action_FirstFragment_to_SecondFragment, bundle);
 
         // 3. Maak de FloatingActionButton onzichtbaar

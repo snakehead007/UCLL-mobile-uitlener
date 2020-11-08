@@ -20,8 +20,8 @@ public interface NotesDao {
     long insertNote(Note note);
 
     // READ
-    @Query("SELECT * FROM " + Constants.TABLE_NAME_NOTE + " WHERE " + Constants.NOTE_COLUMN_NAME_ID + " = :id LIMIT 1")
-    Note getNode(long id);
+    @Query("SELECT * FROM " + Constants.TABLE_NAME + " WHERE " + Constants.COLUMN_NAME_ID + " = :id LIMIT 1")
+    Note getNote(long id);
 
     // UPDATE
     @Update
@@ -33,7 +33,7 @@ public interface NotesDao {
 
     /* --- Operations involving a list of Entities --- */
     // SEARCH all notes. Return ordered on Creation date desc. Last Note on top of list.
-    @Query("SELECT * FROM " + Constants.TABLE_NAME_NOTE + " ORDER BY " + Constants.NOTE_COLUMN_NAME_DATE + " DESC")
+    @Query("SELECT * FROM " + Constants.TABLE_NAME + " ORDER BY " + Constants.COLUMN_NAME_DATE + " DESC")
     List<Note> getAllNotes();
 
     // DELETE a list of notes
@@ -41,7 +41,7 @@ public interface NotesDao {
     void deleteNotes(Note... note);
 
     // DELETE all notes
-    @Query("DELETE FROM " + Constants.TABLE_NAME_NOTE)
+    @Query("DELETE FROM " + Constants.TABLE_NAME)
     void deleteAll();
 
 }

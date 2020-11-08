@@ -17,11 +17,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import be.ucll.java.mobile.ucllnotes.database.Constants;
 import be.ucll.java.mobile.ucllnotes.database.NotesDao;
-import be.ucll.java.mobile.ucllnotes.database.NotesDatabase;
+import be.ucll.java.mobile.ucllnotes.database.LocalDatabase;
 import be.ucll.java.mobile.ucllnotes.model.Note;
 
-public class CreateUpdateNoteFragment extends Fragment {
-    private static final String TAG = "CreateUpdNoteFragment";
+public class CreateUpdateFragment extends Fragment {
+    private static final String TAG = "CreateUpdateFragment";
 
     private String operation;
     private Long id;
@@ -35,7 +35,7 @@ public class CreateUpdateNoteFragment extends Fragment {
     // onCreateView wordt in de lifecycle van de App maar 1 keer opgeroepen op het Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_create_update_note, container, false);
+        return inflater.inflate(R.layout.fragment_create_update, container, false);
     }
 
     // onViewCreated wordt opgeroepen elke keer als het Fragment zichtbaar wordt
@@ -53,11 +53,11 @@ public class CreateUpdateNoteFragment extends Fragment {
         btnSave = view.findViewById(R.id.btnSave);
 
         // Ophalen dao
-        dao = NotesDatabase.getInstance(getContext()).getNotesDao();
+        dao = LocalDatabase.getInstance(getContext()).getNotesDao();
 
         // Zet de Text/Caption van de Button correct
         if (Constants.OPERATION_UPDATE.equals(operation)) {
-            Note n = dao.getNode(id);
+            Note n = dao.getNote(id);
             txtTitle.setText(n.getTitle());
             txtContent.setText(n.getContent());
             btnSave.setText(getString(R.string.btnUpdate));
@@ -88,12 +88,12 @@ public class CreateUpdateNoteFragment extends Fragment {
                 } else {
                     // Maak een nieuwe Nota aan en voeg die toe aan de databank
                     Note n = new Note(title.trim(), content.trim());
-                    Long id = dao.insertNote(n);
+                    long id = dao.insertNote(n);
                     Log.i(TAG, "Note created with ID: " + id);
                 }
 
                 // Keer terug naar het fragment met de lijst van nota's
-                NavHostFragment.findNavController(CreateUpdateNoteFragment.this)
+                NavHostFragment.findNavController(CreateUpdateFragment.this)
                         .navigate(R.id.action_SecondFragment_to_FirstFragment);
 
                 // Maak de FloatingActionButton terug zichtbaar

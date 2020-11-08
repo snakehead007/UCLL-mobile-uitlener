@@ -7,8 +7,8 @@
 
     <fragment
         android:id="@+id/NoteListFragment"
-        android:name="be.ucll.java.mobile.ucllnotes.NoteListFragment"
-        tools:layout="@layout/fragment_notelist">
+        android:name="be.ucll.java.mobile.ucllnotes.RVItemListFragment"
+        tools:layout="@layout/fragment_list">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
@@ -17,8 +17,8 @@
 
     <fragment
         android:id="@+id/CreateUpdateNoteFragment"
-        android:name="be.ucll.java.mobile.ucllnotes.CreateUpdateNoteFragment"
-        tools:layout="@layout/fragment_create_update_note">
+        android:name="be.ucll.java.mobile.ucllnotes.CreateUpdateFragment"
+        tools:layout="@layout/fragment_create_update">
 
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
