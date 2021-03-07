@@ -3,26 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/NoteListFragment">
+    app:startDestination="@id/VoorwerpListFragment">
 
     <fragment
-        android:id="@+id/NoteListFragment"
-        android:name="be.ucll.java.mobile.ucllnotes.RVItemListFragment"
+        android:id="@+id/VoorwerpListFragment"
+        android:name="be.ucll.java.mobile.uitlener_karel_de_smet.RVItemListFragment"
         tools:layout="@layout/fragment_list">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/CreateUpdateNoteFragment" />
+            app:destination="@id/CreateUpdateVoorwerpFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/CreateUpdateNoteFragment"
-        android:name="be.ucll.java.mobile.ucllnotes.CreateUpdateFragment"
+        android:id="@+id/CreateUpdateVoorwerpFragment"
+        android:name="be.ucll.java.mobile.uitlener_karel_de_smet.CreateUpdateFragment"
         tools:layout="@layout/fragment_create_update">
 
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/NoteListFragment" />
+            app:destination="@id/VoorwerpListFragment" />
         <argument
             android:name="operation"
             app:argType="string"
